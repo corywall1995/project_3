@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- Author: Cory Wall -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="heart_skull.png">
+    <link rel="stylesheet" href="project3.css" />
+    <title>Checkers-Board</title>
+    <script type="text/javascript" src="pro3.js"></script>
+  </head>
+  <body onload="main()">
+    <p class="div_center">
+      To select a piece or spot to move simply enter their location as an order pair row#,column#.<br>
+      Type them exactly in that form #,# comma separated with no spaces, then press the button above.<br>
+      If you want to jump a piece enter the location of the piece you want to jump, NOT where you want to jump to.<br>
+      Kinged pieces will show up as a gold X or a gold O
+    </p>
+    <div class="div_center">
+      <p id="instructions"></p>
+      <p id="turn">turn</p>
+      <p id="feedback" class="error">feedback</p>
+    </div>
+    <div class="div_center">
+      <button id="selectPieceBtn" onclick="pieceToMove()">Select Piece</button>
+      <button id="moveBtn" onclick="moveTo()" disabled>Select spot</button><br>
+      <input type="text" id="selectPiece" placeholder="2,3"/>
+      <input type="text" id="move" placeholder="4,3"/>
+    </div>
+    <div class="div_center">
+      <table align = "center">
+       <tr>
+         <th>.</th>
+         <th>0</th>
+         <th>1</th>
+         <th>2</th>
+         <th>3</th>
+         <th>4</th>
+         <th>5</th>
+         <th>6</th>
+         <th>7</th>
+       </tr>
+       <tr>
+         <td>0</td>
+         <td><button id="checker00" class="ckrbtn white">.</button></td>
+         <td><button id="checker01" class="ckrbtn red" >X</button></td>
+         <td><button id="checker02" class="ckrbtn white"  >.</button></td>
+         <td><button id="checker03" class="ckrbtn red">X</button></td>
+         <td><button id="checker04" class="ckrbtn white">.</button></td>
+         <td><button id="checker05" class="ckrbtn red">X</button></td>
+         <td><button id="checker06" class="ckrbtn white">.</button></td>
+         <td><button id="checker07" class="ckrbtn red"  >X</button></td>
+         <td>0</td>
+       </tr>
+       <tr>
+         <td>1</td>
+         <td><button id="checker10" class="ckrbtn red">X</button></td>
+         <td><button id="checker11" class="ckrbtn white">.</button></td>
+         <td><button id="checker12" class="ckrbtn red">X</button></td>
+         <td><button id="checker13" class="ckrbtn white">.</button></td>
+         <td><button id="checker14" class="ckrbtn red">X</button></td>
+         <td><button id="checker15" class="ckrbtn white">.</button></td>
+         <td><button id="checker16" class="ckrbtn red">X</button></td>
+         <td><button id="checker17" class="ckrbtn white">.</button></td>
+         <td>1</td>
+       </tr>
+       <tr>
+         <td>2</td>
+         <td><button id="checker20" class="ckrbtn white">.</button></td>
+         <td><button id="checker21" class="ckrbtn red">X</button></td>
+         <td><button id="checker22" class="ckrbtn white">.</button></td>
+         <td><button id="checker23" class="ckrbtn red">X</button></td>
+         <td><button id="checker24" class="ckrbtn white">.</button></td>
+         <td><button id="checker25" class="ckrbtn red">X</button></td>
+         <td><button id="checker26" class="ckrbtn white">.</button></td>
+         <td><button id="checker27" class="ckrbtn red">X</button></td>
+         <td>2</td>
+       </tr>
+       <tr>
+         <td>3</td>
+         <td><button id="checker30" class="ckrbtn red"></button></td>
+         <td><button id="checker31" class="ckrbtn white"></button></td>
+         <td><button id="checker32" class="ckrbtn red"></button></td>
+         <td><button id="checker33" class="ckrbtn white"></button></td>
+         <td><button id="checker34" class="ckrbtn red"></button></td>
+         <td><button id="checker35" class="ckrbtn white"></button></td>
+         <td><button id="checker36" class="ckrbtn red"></button></td>
+         <td><button id="checker37" class="ckrbtn white"></button></td>
+         <td>3</td>
+       </tr>
+       <tr>
+         <td>4</td>
+         <td><button id="checker40" class="ckrbtn white"></button></td>
+         <td><button id="checker41" class="ckrbtn red"></button></td>
+         <td><button id="checker42" class="ckrbtn white"></button></td>
+         <td><button id="checker43" class="ckrbtn red"></button></td>
+         <td><button id="checker44" class="ckrbtn white"></button></td>
+         <td><button id="checker45" class="ckrbtn red"></button></td>
+         <td><button id="checker46" class="ckrbtn white"></button></td>
+         <td><button id="checker47" class="ckrbtn red"></button></td>
+         <td>4</td>
+       </tr>
+       <tr>
+         <td>5</td>
+         <td><button id="checker50" class="ckrbtn red">O</button></td>
+         <td><button id="checker51" class="ckrbtn white">.</button></td>
+         <td><button id="checker52" class="ckrbtn red">O</button></td>
+         <td><button id="checker53" class="ckrbtn white">.</button></td>
+         <td><button id="checker54" class="ckrbtn red">O</button></td>
+         <td><button id="checker55" class="ckrbtn white">.</button></td>
+         <td><button id="checker56" class="ckrbtn red">O</button></td>
+         <td><button id="checker57" class="ckrbtn white">.</button></td>
+         <td>5</td>
+       </tr>
+       <tr>
+         <td>6</td>
+         <td><button id="checker60" class="ckrbtn white">.</button></td>
+         <td><button id="checker61" class="ckrbtn red">O</button></td>
+         <td><button id="checker62" class="ckrbtn white">.</button></td>
+         <td><button id="checker63" class="ckrbtn red">O</button></td>
+         <td><button id="checker64" class="ckrbtn white">.</button></td>
+         <td><button id="checker65" class="ckrbtn red">O</button></td>
+         <td><button id="checker66" class="ckrbtn white">.</button></td>
+         <td><button id="checker67" class="ckrbtn red">O</button></td>
+         <td>6</td>
+       </tr>
+       <tr>
+         <td>7</td>
+         <td><button id="checker70" class="ckrbtn red">O</button></td>
+         <td><button id="checker71" class="ckrbtn white">.</button></td>
+         <td><button id="checker72" class="ckrbtn red">O</button></td>
+         <td><button id="checker73" class="ckrbtn white">.</button></td>
+         <td><button id="checker74" class="ckrbtn red">O</button></td>
+         <td><button id="checker75" class="ckrbtn white">.</button></td>
+         <td><button id="checker76" class="ckrbtn red">O</button></td>
+         <td><button id="checker77" class="ckrbtn white">.</button></td>
+         <td>7</td>
+       </tr>
+       <tr>
+         <td>.</td>
+         <td>0</td>
+         <td>1</td>
+         <td>2</td>
+         <td>3</td>
+         <td>4</td>
+         <td>5</td>
+         <td>6</td>
+         <td>7</td>
+       </tr>
+      </table>
+    </div><br><br><br>
+
+
+
+    <div class="footer">
+      <p>
+        Created by: Cory Wall
+      </p>
+      <p>
+      Background
+      <a
+      href="http://www.designbolts.com/wp-content/uploads/2013/02/Rose-Grey-Seamless-Patterns-For-Website-Background.jpg"
+      target="_blank">
+        [image source]
+      </a>
+    </p>
+    </div>
+  </body>
+</html>

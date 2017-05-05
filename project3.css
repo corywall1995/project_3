@@ -1,0 +1,81 @@
+/* Author: Cory Wall */
+body {
+  background-image: url(greyBackground.jpg);
+  font-family: Tahoma, Geneva, sans-serif;
+  font size: 2em;
+}
+
+.error {
+  color: red;
+}
+
+.footer {
+  font-size: 1em;
+  text-align: center;
+  bottom: 0px;
+  width: 100%;
+}
+
+h1{
+  color: blue;
+  font-size: 2em;
+}
+
+div.footer > p {
+  font-size: 1em;
+}
+
+.center {
+  text-align: center;
+  font-size: 3em;
+}
+
+.div_center {
+  text-align: center;
+}
+
+.half_page {
+  float: left;
+  width: 50%;
+}
+
+.ckrbtn {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  position: relative;
+}
+
+.red {
+  font-weight: bold;
+  background-color: red;
+}
+
+.white {
+  color: transparent;
+  background-color: white;
+}
+
+.hideText {
+  color: transparent;
+}
+
+.king {
+  color: gold;
+}
+
+table {
+  width: auto;
+  text-align: center;
+}
+
+tr {
+  width: 50px;
+  height: 50px;
+}
+
+td {
+  width: 50px;
+  height: 50px;
+  font-weight: bold;
+}
