@@ -425,7 +425,7 @@ function checkIfKing() {
 //console.log('in check if king between for loops')
   for(j = 0; j < 8; j++) {
     if(board[7][j] == 'x') {
-      board[7][j] == 'X';
+      board[7][j] = 'X';
       kngBtn2 += j;
       document.getElementById(kngBtn2).classList.add("king");
     }
@@ -666,7 +666,7 @@ function reselect() {
   document.getElementById('moveBtn').disabled = true;
   document.getElementById('selectPiece').value = '';
   document.getElementById('move').value = '';
-  document.getElementById(element).classList.remove(selected);
+  document.getElementById(element).classList.remove('selected');
   document.getElementById('reselect').disabled = true;
 
 }
