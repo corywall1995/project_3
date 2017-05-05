@@ -640,6 +640,15 @@ function addUser() {
   }
 }
 
+function reselect() {
+  var element = 'checker' + fr_row + fr_col;
+  document.getElementById('selectPieceBtn').disabled = false;
+  document.getElementById('moveBtn').disabled = true;
+  document.getElementById('selectPiece').value = '';
+  document.getElementById('move').value = '';
+  document.getElementById(element).classList.remove(selected);
+
+}
 
 // Courtesy of W3schools
 // https://www.w3schools.com/js/js_cookies.asp
