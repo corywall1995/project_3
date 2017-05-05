@@ -11,27 +11,33 @@ function pieceToMove() {
   console.log('in pieceToMove');
   var input = document.getElementById("selectPiece").value;
   var inputLength = input.length;
+  var goodInput = true;
   if(inputLength != 3)  {
     document.getElementById('feedback').innerHTML = "Invalid input, make sure your input is in the format #,#";
+    goodInput = false;
   } else if (isNaN(input.charAt(0))) {
     document.getElementById('feedback').innerHTML = "Invalid input, row value must be a number";
+    goodInput = false;
   } else if (isNaN(input.charAt(3))) {
     document.getElementById('feedback').innerHTML = "Invalid input, column value must be a number";
+    goodInput = false;
   } else if (input.charAt(0) < 0 || input.charAt(0) > 7) {
     document.getElementById('feedback').innerHTML = "Invalid input, row value out of index";
+    goodInput = false;
   } else if (input.charAt(2) < 0 || input.charAt(2) > 7) {
     document.getElementById('feedback').innerHTML = "Invalid input, column value out of index";
+    goodInput = false;
   }
 
-   if (checkIfPlayerPiece(input.charAt(0), input.charAt(2))) {
+   if (checkIfPlayerPiece(input.charAt(0), input.charAt(2)) && goodInput) {
      fr_row = Number(input.charAt(0));
      fr_col = Number(input.charAt(2));
      document.getElementById('selectPieceBtn').disabled = true;
      document.getElementById('moveBtn').disabled = false;
+     var selectedBtn = 'checker' + fr_row + fr_col;
+     document.getElementById(selectedBtn).classList.add("selected");
+     document.getElementById('reselect').disabled = false;
    }
-
-   var selectedBtn = 'checker' + fr_row + fr_col;
-   document.getElementById(selectedBtn).classList.add("selected");
 
 }
 
@@ -100,6 +106,7 @@ function moveTo() {
               checkIfWin();
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
 
             }
           // if moving left
@@ -119,6 +126,7 @@ function moveTo() {
               checkIfWin();
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
           }
         // if is a king
@@ -141,6 +149,7 @@ function moveTo() {
               moveKing(fr_row, fr_col, row+1, col+1);
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
           // if moving down and left
           } else if (row > fr_row && col < fr_col) {
@@ -160,6 +169,7 @@ function moveTo() {
               moveKing(fr_row, fr_col, row+1, col-1);
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
           // if moving up and right
           } else if (row < fr_row && col > fr_col) {
@@ -179,6 +189,7 @@ function moveTo() {
               moveKing(fr_row, fr_col, row-1, col+1);
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
         // if moving up and left
           } else if (row < fr_row && col < fr_col) {
@@ -197,6 +208,7 @@ function moveTo() {
               checkIfWin();
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
           }
         }
@@ -217,6 +229,7 @@ function moveTo() {
         }
         var selectedBtn = 'checker' + fr_row + fr_col;
         document.getElementById(selectedBtn).classList.remove("selected");
+        document.getElementById('reselect').disabled = true;
       }
     }
 
@@ -244,6 +257,7 @@ function moveTo() {
               checkIfWin();
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
           // if moving left
           } else if (col < fr_col) {
@@ -262,6 +276,7 @@ function moveTo() {
               checkIfWin();
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
           }
         // if is a king
@@ -284,6 +299,7 @@ function moveTo() {
               moveKing(fr_row, fr_col, row+1, col+1);
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
           // if moving down and left
           } else if (row > fr_row && col < fr_col) {
@@ -303,6 +319,7 @@ function moveTo() {
               moveKing(fr_row, fr_col, row+1, col-1);
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
           // if moving up and right
           } else if (row < fr_row && col > fr_col) {
@@ -322,6 +339,7 @@ function moveTo() {
               moveKing(fr_row, fr_col, row-1, col+1);
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
         // if moving up and left
           } else if (row < fr_row && col < fr_col) {
@@ -339,6 +357,7 @@ function moveTo() {
               moveKing(fr_row, fr_col, row-1, col-1);
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
+              document.getElementById('reselect').disabled = true;
             }
           }
         }
@@ -359,6 +378,7 @@ function moveTo() {
         }
         var selectedBtn = 'checker' + fr_row + fr_col;
         document.getElementById(selectedBtn).classList.remove("selected");
+        document.getElementById('reselect').disabled = true;
       }
     }
     }
@@ -647,6 +667,7 @@ function reselect() {
   document.getElementById('selectPiece').value = '';
   document.getElementById('move').value = '';
   document.getElementById(element).classList.remove(selected);
+  document.getElementById('reselect').disabled = true;
 
 }
 
