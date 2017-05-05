@@ -30,6 +30,9 @@ function pieceToMove() {
      document.getElementById('moveBtn').disabled = false;
    }
 
+   var selectedBtn = 'checker' + fr_row + fr_col;
+   document.getElementById(selectedBtn).classList.add("selected");
+
 }
 
 function checkIfPlayerPiece(rw, col) {
@@ -95,6 +98,9 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
+
             }
           // if moving left
           } else if (col < fr_col) {
@@ -111,6 +117,8 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
           }
         // if is a king
@@ -130,6 +138,9 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              moveKing(fr_row, fr_col, row+1, col+1);
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
           // if moving down and left
           } else if (row > fr_row && col < fr_col) {
@@ -146,6 +157,9 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              moveKing(fr_row, fr_col, row+1, col-1);
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
           // if moving up and right
           } else if (row < fr_row && col > fr_col) {
@@ -162,6 +176,9 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              moveKing(fr_row, fr_col, row-1, col+1);
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
         // if moving up and left
           } else if (row < fr_row && col < fr_col) {
@@ -176,7 +193,10 @@ function moveTo() {
               diableMovebtn();
               updateTurnDisplay();
               checkIfKing();
+              moveKing(fr_row, fr_col, row-1, col-1);
               checkIfWin();
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
           }
         }
@@ -192,6 +212,11 @@ function moveTo() {
         updateTurnDisplay();
         checkIfKing();
         checkIfWin();
+        if(board[row][col] == 'X') {
+          moveKing(fr_row, fr_col, row, col);
+        }
+        var selectedBtn = 'checker' + fr_row + fr_col;
+        document.getElementById(selectedBtn).classList.remove("selected");
       }
     }
 
@@ -217,6 +242,8 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
           // if moving left
           } else if (col < fr_col) {
@@ -233,6 +260,8 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
           }
         // if is a king
@@ -252,6 +281,9 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              moveKing(fr_row, fr_col, row+1, col+1);
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
           // if moving down and left
           } else if (row > fr_row && col < fr_col) {
@@ -268,6 +300,9 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              moveKing(fr_row, fr_col, row+1, col-1);
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
           // if moving up and right
           } else if (row < fr_row && col > fr_col) {
@@ -284,6 +319,9 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              moveKing(fr_row, fr_col, row-1, col+1);
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
         // if moving up and left
           } else if (row < fr_row && col < fr_col) {
@@ -298,6 +336,9 @@ function moveTo() {
               updateTurnDisplay();
               checkIfKing();
               checkIfWin();
+              moveKing(fr_row, fr_col, row-1, col-1);
+              var selectedBtn = 'checker' + fr_row + fr_col;
+              document.getElementById(selectedBtn).classList.remove("selected");
             }
           }
         }
@@ -313,6 +354,11 @@ function moveTo() {
         updateTurnDisplay();
         checkIfKing();
         checkIfWin();
+        if(board[row][col] == 'O') {
+          moveKing(fr_row, fr_col, row, col);
+        }
+        var selectedBtn = 'checker' + fr_row + fr_col;
+        document.getElementById(selectedBtn).classList.remove("selected");
       }
     }
     }
@@ -338,28 +384,34 @@ function checkIfWin() {
     window.location.href='winner.html';
   }
 }
+
 function returnHome() {
   window.location.href='index.html';
 }
 
 
 function checkIfKing() {
+  //console.log("in check if king");
   var i, j;
+  var kngBtn = 'checker0';
+  var kngBtn2 = 'checker7';
   for(i = 0; i < 8; i++) {
     if(board[0][i] == 'o') {
       board[0][i] = 'O';
-      var kngBtn = 'checker0' + i;
+      kngBtn += i;
       document.getElementById(kngBtn).classList.add("king");
     }
   }
-
+//console.log('in check if king between for loops')
   for(j = 0; j < 8; j++) {
-    if(board[7][j] == 'o') {
-      board[7][j] == 'O';
-      var kngBtn2 = 'checker7' + i;
+    if(board[7][j] == 'x') {
+      board[7][j] == 'X';
+      kngBtn2 += j;
       document.getElementById(kngBtn2).classList.add("king");
     }
   }
+  console.log(kngBtn);
+  console.log(kngBtn2);
 }
 
 function winner() {
@@ -430,6 +482,13 @@ function checkIfValidMove(row, colmn) {
   }
 }
 
+function moveKing(frR, frC, toR, toC) {
+  var remove = 'checker' + frR + frC;
+  var add = 'checker' + toR + toC;
+  document.getElementById(remove).classList.remove('king');
+  document.getElementById(add).classList.add('king');
+}
+
 function checkIfValidMove2(row, colmn) {
   var rw = Number(row);
   var col = Number(colmn);
@@ -459,8 +518,7 @@ function main() {
   var play2 = getCookie("playerTwo");
   user = new userInfo(play1, play2);
   document.getElementById('turn').innerHTML= user.playerOne + "s turn";
-  document.getElementById('instructions').innerHTML = user.playerOne + " is the X'x<br>" + user.playerTwo + " is O's"
-
+  document.getElementById('instructions').innerHTML = user.playerOne + " is the X's<br>" + user.playerTwo + " is O's"
 }
 
 // Set up a multi dimensional array as the "board"
