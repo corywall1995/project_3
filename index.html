@@ -12,13 +12,28 @@
     <div class="div_center">
       <h1>Welcome!</h1>
       <h2>Please enter the following information</h2>
-
+    <div class="half_page">
       <p>Player one:</p>
       <input type="text" id="player_one" placeholder="Bruce"/>
+      <p>Player One will be the X's</p>
+    </div>
+    <div class="half_page">
       <p>Player two:</p>
       <input type="text" id="player_two" placeholder="Wayne"/><br><br>
+      <p>Player Two will be the O's</p>
+    </div>
       <button id="user_submit_btn" onclick="addUser();">Submit</button>
       <p id="user_error" class="error"></p>
+      <p class = "margin">Once you've entered the both a player one and a player two name please press submit to continue</p>
+      <p class = "margin">On the follow page is a checker board with the pieces denoted with either an X or an O. X's (player one) move first.
+        To move simple enter the cordinates of the piece you wish to move as an ordered pair separated by a comma, ie. 2,1
+        Then press the Select Piece button, doing so will highlight the selected piece on the board,
+        if this is not the piece that you intended on moving you may reselect you piece by pressing the reselect button. Once
+        you've selected the piece you wish to move then in the next text box enter the coordinates of the spot where you'd
+        like to move it to. If you want to jump a piece enter the location of the piece you want to jump, NOT the location of
+        where you would end up after the jump.<br>Note: Multiple jumps are not allowed.
+      </p>
+      <button id="continueBtn" onclick="game();" disabled>Continue to game</button>
   </div>
 <br><br><br><br>
 

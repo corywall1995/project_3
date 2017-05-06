@@ -30,6 +30,16 @@ div.footer > p {
   font-size: 3em;
 }
 
+.success {
+  color: green;
+}
+
+.margin {
+  margin-left: 15em;
+  margin-right: 15em;
+  text-align: center;
+}
+
 .div_center {
   text-align: center;
 }

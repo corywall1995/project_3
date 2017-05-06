@@ -645,6 +645,10 @@ function checkLast() {
   }
 }
 
+function game() {
+  window.location.href='checkers.html';
+}
+
 function addUser() {
   var checkF = checkFirst();
   var checkL = checkLast();
@@ -654,9 +658,16 @@ function addUser() {
     user = new userInfo(first, last);
     setCookie("playerOne", user.playerOne, 1);
     setCookie("playerTwo", user.playerTwo, 1);
-    window.location.href='checkers.html';
+    //window.location.href='checkers.html';
+    document.getElementById('continueBtn').disabled = false;
+    document.getElementById('user_error').classList.remove('error');
+    document.getElementById('user_error').classList.add('success');
+    document.getElementById('user_error').innerHTML = "Player One: " + user.playerOne + "<br>Player Two: " + user.playerTwo;
   } else {
+    document.getElementById('user_error').classList.remove('success');
+    document.getElementById('user_error').classList.add('error');
     document.getElementById('user_error').innerHTML = "Two players are required.";
+    document.getElementById('continueBtn').disabled = true;
   }
 }
 
