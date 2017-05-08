@@ -5,6 +5,10 @@ body {
   font size: 1.25em;
 }
 
+.tableCenter {
+  margin: 0px auto; 
+}
+
 .error {
   color: red;
 }
