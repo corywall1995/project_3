@@ -5,11 +5,10 @@ var user, board, turn = true;
 var fr_row, fr_col, to_row, to_col;
 var xCount = 0;
 var oCount = 0;
-var winPic = [];
 
 function pieceToMove() {
   document.getElementById('feedback').innerHTML = "feedback";
-  console.log('in pieceToMove');
+  //console.log('in pieceToMove');
   var input = document.getElementById("selectPiece").value;
   var inputLength = input.length;
   var goodInput = true;
@@ -64,7 +63,7 @@ function checkIfPlayerPiece(rw, col) {
 
 function moveTo() {
   document.getElementById('feedback').innerHTML = "feedback";
-  console.log('in moveTo()');
+  //console.log('in moveTo()');
   var input = document.getElementById("move").value;
   var inputLength = input.length;
   if(inputLength != 3)  {
@@ -431,8 +430,8 @@ function checkIfKing() {
       document.getElementById(kngBtn2).classList.add("king");
     }
   }
-  console.log(kngBtn);
-  console.log(kngBtn2);
+//  console.log(kngBtn);
+//  console.log(kngBtn2);
 }
 
 function winner() {
@@ -482,14 +481,14 @@ function checkIfValidMove(row, colmn) {
   var col = Number(colmn);
   if (board[fr_row][fr_col] == 'x') {
     if (rw == (fr_row+1) && col == (fr_col+1)) {
-      console.log(395)
+  //    console.log(395)
       return true;
     } else if (rw == (fr_row+1) && col == (fr_col-1)) {
-      console.log(398)
+//      console.log(398)
       return true;
     } else {
       document.getElementById('feedback').innerHTML = "Invalid move";
-      console.log(402);
+  //    console.log(402);
       return false;
     }
   } else if (board[fr_row][fr_col] == 'X') {
@@ -497,7 +496,7 @@ function checkIfValidMove(row, colmn) {
       return true;
     } else {
       document.getElementById('feedback').innerHTML = "Invalid move";
-      console.log(406);
+    //  console.log(406);
       return false;
     }
   }
@@ -518,7 +517,7 @@ function checkIfValidMove2(row, colmn) {
       return true;
     } else {
       document.getElementById('feedback').innerHTML = "Invalid move";
-      console.log(418);
+      //console.log(418);
       return false;
     }
   } else if (board[fr_row][fr_col] == 'O') {
@@ -526,7 +525,7 @@ function checkIfValidMove2(row, colmn) {
       return true;
     } else {
       document.getElementById('feedback').innerHTML = "Invalid move";
-      console.log(426);
+      //console.log(426);
       return false;
     }
   }
