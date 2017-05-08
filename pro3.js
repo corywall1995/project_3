@@ -37,6 +37,7 @@ function pieceToMove() {
      var selectedBtn = 'checker' + fr_row + fr_col;
      document.getElementById(selectedBtn).classList.add("selected");
      document.getElementById('reselect').disabled = false;
+     document.getElementById('coordinates').innerHTML = 'coordinates';
    }
 
 }
@@ -107,7 +108,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
-
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
           // if moving left
           } else if (col < fr_col) {
@@ -127,6 +128,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
           }
         // if is a king
@@ -150,6 +152,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
           // if moving down and left
           } else if (row > fr_row && col < fr_col) {
@@ -170,6 +173,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
           // if moving up and right
           } else if (row < fr_row && col > fr_col) {
@@ -190,6 +194,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
         // if moving up and left
           } else if (row < fr_row && col < fr_col) {
@@ -209,6 +214,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
           }
         }
@@ -230,6 +236,7 @@ function moveTo() {
         var selectedBtn = 'checker' + fr_row + fr_col;
         document.getElementById(selectedBtn).classList.remove("selected");
         document.getElementById('reselect').disabled = true;
+        document.getElementById('coordinates').innerHTML = 'coordinates';
       }
     }
 
@@ -258,6 +265,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
           // if moving left
           } else if (col < fr_col) {
@@ -277,6 +285,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
           }
         // if is a king
@@ -300,6 +309,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
           // if moving down and left
           } else if (row > fr_row && col < fr_col) {
@@ -320,6 +330,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
           // if moving up and right
           } else if (row < fr_row && col > fr_col) {
@@ -340,6 +351,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
         // if moving up and left
           } else if (row < fr_row && col < fr_col) {
@@ -349,6 +361,7 @@ function moveTo() {
               board[row][col] = '';
               updateBoard(fr_row,fr_col,'');
               updateBoard(row-1,col-1,'O');
+              updateBoard(row,col, '');
               turn = !turn;
               diableMovebtn();
               updateTurnDisplay();
@@ -358,6 +371,7 @@ function moveTo() {
               var selectedBtn = 'checker' + fr_row + fr_col;
               document.getElementById(selectedBtn).classList.remove("selected");
               document.getElementById('reselect').disabled = true;
+              document.getElementById('coordinates').innerHTML = 'coordinates';
             }
           }
         }
@@ -379,6 +393,7 @@ function moveTo() {
         var selectedBtn = 'checker' + fr_row + fr_col;
         document.getElementById(selectedBtn).classList.remove("selected");
         document.getElementById('reselect').disabled = true;
+        document.getElementById('coordinates').innerHTML = 'coordinates';
       }
     }
     }
@@ -707,4 +722,9 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+function displayCoor(r, c) {
+  document.getElementById('coordinates').innerHTML = r + ',' + c;
+
 }

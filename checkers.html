@@ -14,7 +14,7 @@
       To select a piece or spot to move simply enter their location as an order pair row#,column#.<br>
       Type them exactly in that form #,# comma separated with no spaces, then press the button above.<br>
       If you want to jump a piece enter the location of the piece you want to jump, NOT where you want to jump to.<br>
-      Kinged pieces will show up as a gold X or a gold O
+      Kinged pieces will show up as a gold X or a gold O. Clicking on the board will display the coordinates of the tile you clicked on.
     </p>
     <div class="div_center">
       <p id="instructions"></p>
@@ -27,6 +27,7 @@
       <input type="text" id="selectPiece" placeholder="2,3"/>
       <input type="text" id="move" placeholder="4,3"/><br>
       <button id="reselect" onclick="reselect();" disabled>Reselect Piece</button>
+      <p id="coordinates">coordinates</p>
     </div>
     <div class="div_center">
 
@@ -46,96 +47,96 @@
        <tr>
          <td>0</td>
          <td><button id="checker00" class="ckrbtn white">.</button></td>
-         <td><button id="checker01" class="ckrbtn red" >X</button></td>
+         <td><button id="checker01" class="ckrbtn red" onclick="displayCoor(0,1)">X</button></td>
          <td><button id="checker02" class="ckrbtn white"  >.</button></td>
-         <td><button id="checker03" class="ckrbtn red">X</button></td>
+         <td><button id="checker03" class="ckrbtn red" onclick="displayCoor(0,3)">X</button></td>
          <td><button id="checker04" class="ckrbtn white">.</button></td>
-         <td><button id="checker05" class="ckrbtn red">X</button></td>
+         <td><button id="checker05" class="ckrbtn red" onclick="displayCoor(0,5)">X</button></td>
          <td><button id="checker06" class="ckrbtn white">.</button></td>
-         <td><button id="checker07" class="ckrbtn red"  >X</button></td>
+         <td><button id="checker07" class="ckrbtn red" onclick="displayCoor(0,7)">X</button></td>
          <td>0</td>
        </tr>
        <tr>
          <td>1</td>
-         <td><button id="checker10" class="ckrbtn red">X</button></td>
+         <td><button id="checker10" class="ckrbtn red" onclick="displayCoor(1,0)">X</button></td>
          <td><button id="checker11" class="ckrbtn white">.</button></td>
-         <td><button id="checker12" class="ckrbtn red">X</button></td>
+         <td><button id="checker12" class="ckrbtn red" onclick="displayCoor(1,2)">X</button></td>
          <td><button id="checker13" class="ckrbtn white">.</button></td>
-         <td><button id="checker14" class="ckrbtn red">X</button></td>
+         <td><button id="checker14" class="ckrbtn red" onclick="displayCoor(1,4)">X</button></td>
          <td><button id="checker15" class="ckrbtn white">.</button></td>
-         <td><button id="checker16" class="ckrbtn red">X</button></td>
+         <td><button id="checker16" class="ckrbtn red" onclick="displayCoor(1,6)">X</button></td>
          <td><button id="checker17" class="ckrbtn white">.</button></td>
          <td>1</td>
        </tr>
        <tr>
          <td>2</td>
          <td><button id="checker20" class="ckrbtn white">.</button></td>
-         <td><button id="checker21" class="ckrbtn red">X</button></td>
+         <td><button id="checker21" class="ckrbtn red" onclick="displayCoor(2,1)">X</button></td>
          <td><button id="checker22" class="ckrbtn white">.</button></td>
-         <td><button id="checker23" class="ckrbtn red">X</button></td>
+         <td><button id="checker23" class="ckrbtn red" onclick="displayCoor(2,3)">X</button></td>
          <td><button id="checker24" class="ckrbtn white">.</button></td>
-         <td><button id="checker25" class="ckrbtn red">X</button></td>
+         <td><button id="checker25" class="ckrbtn red" onclick="displayCoor(2,5)">X</button></td>
          <td><button id="checker26" class="ckrbtn white">.</button></td>
-         <td><button id="checker27" class="ckrbtn red">X</button></td>
+         <td><button id="checker27" class="ckrbtn red" onclick="displayCoor(2,7)">X</button></td>
          <td>2</td>
        </tr>
        <tr>
          <td>3</td>
-         <td><button id="checker30" class="ckrbtn red"></button></td>
+         <td><button id="checker30" class="ckrbtn red" onclick="displayCoor(3,0)"></button></td>
          <td><button id="checker31" class="ckrbtn white"></button></td>
-         <td><button id="checker32" class="ckrbtn red"></button></td>
+         <td><button id="checker32" class="ckrbtn red" onclick="displayCoor(3,2)"></button></td>
          <td><button id="checker33" class="ckrbtn white"></button></td>
-         <td><button id="checker34" class="ckrbtn red"></button></td>
+         <td><button id="checker34" class="ckrbtn red" onclick="displayCoor(3,4)"></button></td>
          <td><button id="checker35" class="ckrbtn white"></button></td>
-         <td><button id="checker36" class="ckrbtn red"></button></td>
+         <td><button id="checker36" class="ckrbtn red" onclick="displayCoor(3,6)"></button></td>
          <td><button id="checker37" class="ckrbtn white"></button></td>
          <td>3</td>
        </tr>
        <tr>
          <td>4</td>
          <td><button id="checker40" class="ckrbtn white"></button></td>
-         <td><button id="checker41" class="ckrbtn red"></button></td>
+         <td><button id="checker41" class="ckrbtn red" onclick="displayCoor(4,1)"></button></td>
          <td><button id="checker42" class="ckrbtn white"></button></td>
-         <td><button id="checker43" class="ckrbtn red"></button></td>
+         <td><button id="checker43" class="ckrbtn red" onclick="displayCoor(4,3)"></button></td>
          <td><button id="checker44" class="ckrbtn white"></button></td>
-         <td><button id="checker45" class="ckrbtn red"></button></td>
+         <td><button id="checker45" class="ckrbtn red" onclick="displayCoor(4,5)"></button></td>
          <td><button id="checker46" class="ckrbtn white"></button></td>
-         <td><button id="checker47" class="ckrbtn red"></button></td>
+         <td><button id="checker47" class="ckrbtn red" onclick="displayCoor(4,7)"></button></td>
          <td>4</td>
        </tr>
        <tr>
          <td>5</td>
-         <td><button id="checker50" class="ckrbtn red">O</button></td>
+         <td><button id="checker50" class="ckrbtn red" onclick="displayCoor(5,0)">O</button></td>
          <td><button id="checker51" class="ckrbtn white">.</button></td>
-         <td><button id="checker52" class="ckrbtn red">O</button></td>
+         <td><button id="checker52" class="ckrbtn red" onclick="displayCoor(5,2)">O</button></td>
          <td><button id="checker53" class="ckrbtn white">.</button></td>
-         <td><button id="checker54" class="ckrbtn red">O</button></td>
+         <td><button id="checker54" class="ckrbtn red" onclick="displayCoor(5,4)">O</button></td>
          <td><button id="checker55" class="ckrbtn white">.</button></td>
-         <td><button id="checker56" class="ckrbtn red">O</button></td>
+         <td><button id="checker56" class="ckrbtn red" onclick="displayCoor(5,6)">O</button></td>
          <td><button id="checker57" class="ckrbtn white">.</button></td>
          <td>5</td>
        </tr>
        <tr>
          <td>6</td>
          <td><button id="checker60" class="ckrbtn white">.</button></td>
-         <td><button id="checker61" class="ckrbtn red">O</button></td>
+         <td><button id="checker61" class="ckrbtn red" onclick="displayCoor(6,1)">O</button></td>
          <td><button id="checker62" class="ckrbtn white">.</button></td>
-         <td><button id="checker63" class="ckrbtn red">O</button></td>
+         <td><button id="checker63" class="ckrbtn red" onclick="displayCoor(6,3)">O</button></td>
          <td><button id="checker64" class="ckrbtn white">.</button></td>
-         <td><button id="checker65" class="ckrbtn red">O</button></td>
+         <td><button id="checker65" class="ckrbtn red" onclick="displayCoor(6,5)">O</button></td>
          <td><button id="checker66" class="ckrbtn white">.</button></td>
-         <td><button id="checker67" class="ckrbtn red">O</button></td>
+         <td><button id="checker67" class="ckrbtn red" onclick="displayCoor(6,7)">O</button></td>
          <td>6</td>
        </tr>
        <tr>
          <td>7</td>
-         <td><button id="checker70" class="ckrbtn red">O</button></td>
+         <td><button id="checker70" class="ckrbtn red" onclick="displayCoor(7,0)">O</button></td>
          <td><button id="checker71" class="ckrbtn white">.</button></td>
-         <td><button id="checker72" class="ckrbtn red">O</button></td>
+         <td><button id="checker72" class="ckrbtn red" onclick="displayCoor(7,2)">O</button></td>
          <td><button id="checker73" class="ckrbtn white">.</button></td>
-         <td><button id="checker74" class="ckrbtn red">O</button></td>
+         <td><button id="checker74" class="ckrbtn red" onclick="displayCoor(7,4)">O</button></td>
          <td><button id="checker75" class="ckrbtn white">.</button></td>
-         <td><button id="checker76" class="ckrbtn red">O</button></td>
+         <td><button id="checker76" class="ckrbtn red" onclick="displayCoor(7,6)">O</button></td>
          <td><button id="checker77" class="ckrbtn white">.</button></td>
          <td>7</td>
        </tr>
