@@ -5,6 +5,7 @@ var user, board, turn = true;
 var fr_row, fr_col, to_row, to_col;
 var xCount = 0;
 var oCount = 0;
+var winPic = [];
 
 function pieceToMove() {
   document.getElementById('feedback').innerHTML = "feedback";
